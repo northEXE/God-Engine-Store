@@ -46,7 +46,7 @@ public class Peca {
 	private Long qtdEstoque;
 	
 	@Column(name = "isEmFalta")
-	private Boolean isEmfalta;
+	private String isEmfalta;
 
 	public Integer getIdPeca() {
 		return idPeca;
@@ -128,11 +128,11 @@ public class Peca {
 		this.qtdEstoque = qtdEstoque;
 	}
 
-	public Boolean getIsEmfalta() {
+	public String getIsEmfalta() {
 		return isEmfalta;
 	}
 
-	public void setIsEmfalta(Boolean isEmfalta) {
+	public void setIsEmfalta(String isEmfalta) {
 		this.isEmfalta = isEmfalta;
 	}
 

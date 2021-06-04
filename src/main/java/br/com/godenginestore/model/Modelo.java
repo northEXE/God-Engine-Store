@@ -26,7 +26,7 @@ public class Modelo {
 	private String nomeModelo;
 	
 	@Column(name = "anoModelo")
-	private Integer anoModelo;
+	private String anosEmFabricacao;
 	
 	@Column(name = "descricaoModelo")
 	private String descricaoModelo;
@@ -38,10 +38,10 @@ public class Modelo {
 	private List<Motor> motoresCompativeis;
 	
 	@Column(name = "isNacional")
-	private Boolean isNacional;
+	private String isNacional;
 	
 	@Column(name="isEmLinha")
-	private Boolean isEmLinha;
+	private String isEmLinha;
 	
 	public Integer getIdModelo() {
 		return idModelo;
@@ -67,12 +67,12 @@ public class Modelo {
 		this.nomeModelo = nomeModelo;
 	}
 
-	public Integer getAnoModelo() {
-		return anoModelo;
+	public String getAnosEmFabricacao() {
+		return anosEmFabricacao;
 	}
 
-	public void setAnoModelo(Integer anoModelo) {
-		this.anoModelo = anoModelo;
+	public void setAnosEmFabricacao(String anosEmFabricacao) {
+		this.anosEmFabricacao = anosEmFabricacao;
 	}
 
 	public String getDescricaoModelo() {
@@ -99,19 +99,19 @@ public class Modelo {
 		this.motoresCompativeis = motoresCompativeis;
 	}
 
-	public Boolean getIsNacional() {
+	public String getIsNacional() {
 		return isNacional;
 	}
 
-	public void setIsNacional(Boolean isNacional) {
+	public void setIsNacional(String isNacional) {
 		this.isNacional = isNacional;
 	}
 
-	public Boolean getIsEmLinha() {
+	public String getIsEmLinha() {
 		return isEmLinha;
 	}
 
-	public void setIsEmLinha(Boolean isEmLinha) {
+	public void setIsEmLinha(String isEmLinha) {
 		this.isEmLinha = isEmLinha;
 	}
 

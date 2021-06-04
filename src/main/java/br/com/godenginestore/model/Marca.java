@@ -28,7 +28,7 @@ public class Marca {
 	private List<Motor> motores;
 	
 	@Column(name = "isEmAtividade")
-	private Character isEmAtividade;
+	private String isEmAtividade;
 
 	public Integer getIdMarca() {
 		return idMarca;
@@ -62,11 +62,11 @@ public class Marca {
 		this.motores = motores;
 	}
 
-	public Character getIsEmAtividade() {
+	public String getIsEmAtividade() {
 		return isEmAtividade;
 	}
 
-	public void setIsEmAtividade(Character isEmAtividade) {
+	public void setIsEmAtividade(String isEmAtividade) {
 		this.isEmAtividade = isEmAtividade;
 	}
 

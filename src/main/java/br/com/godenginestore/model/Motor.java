@@ -29,7 +29,7 @@ public class Motor {
 	private Boolean isNacional;
 	
 	@Column(name = "isEmProducao")
-	private Boolean isEmProducao;
+	private String isEmProducao;
 	
 	@OneToMany
 	private List<Modelo> modelosAplicados;
@@ -74,11 +74,11 @@ public class Motor {
 		this.isNacional = isNacional;
 	}
 
-	public Boolean getIsEmProducao() {
+	public String getIsEmProducao() {
 		return isEmProducao;
 	}
 
-	public void setIsEmProducao(Boolean isEmProducao) {
+	public void setIsEmProducao(String isEmProducao) {
 		this.isEmProducao = isEmProducao;
 	}
 
