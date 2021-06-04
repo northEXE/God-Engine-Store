@@ -4,57 +4,57 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
-<head>
-	<title>G.E.S - Marcas: Cadastro</title>
-	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     <meta charset="UTF-8"/>
-</head>
-<body>
-	<div class="container">
-		<div class="row left col s1">
-			<h5 class="header left teal-text text-lighten-2"><a href="/" class="btn-flat waves-effect waves-light">Voltar</a></h5>
+	<head>
+		<title>G.E.S. - Marcas: Cadastro</title>
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	     <meta charset="UTF-8"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row left col s1">
+				<h5 class="header left teal-text text-lighten-2"><a href="/" class="btn-flat waves-effect waves-light">Voltar</a></h5>
+			</div>
+			<div class="row center col s12">
+				<h3 class="header center teal-text text-lighten-2">Cadastro de Marca</h1>	
+			</div>
+			<div class="row">
+				<form action="/marca/cadastrar" method="POST" th:object="${marca}" class="col s12">
+					<div class="input-field col s4">
+						<input type="hidden" th:field="*{idMarca}" />
+						<input th:value="${marca.nomeMarca}" placeholder="Nome da marca" id="marca" name="nomeMarca" type="text" class="validate" />
+						<label for="marca">Nome da Marca</label>
+					</div>
+					<div class="col s4">
+						<label for="isEmAtividade">Está em atividade?</label>
+						<p>
+							<label>
+								<input type="radio" name="isEmAtividade" value="S" checked />
+								<span>Sim</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input type="radio" name="isEmAtividade" value="N" />
+								<span>Não</span>
+							</label>
+						</p>
+					</div>
+					<div class="col s4">
+						<button class="btn-flat waves-effect waves-light teal-text text-lighten-2" type="submit" name="action">Salvar informações</button>
+					</div>
+				</form>
+			</div>
 		</div>
-		<div class="row center col s12">
-			<h3 class="header center teal-text text-lighten-2">Cadastro de Marca</h1>	
-		</div>
-		<div class="row">
-			<form action="/marca/cadastrar" method="POST" th:object="${marca}">
-				<div class="input-field col s4">
-					<input type="hidden" th:field="*{idMarca}" />
-					<input placeholder="Nome da marca" id="marca" name="nomeMarca" type="text" class="validate" th:value="${marca.nomeMarca}" />
-					<label for="marca">Nome da Marca</label>
-				</div>
-				<div class="col s4">
-					<label for="isEmAtividade">Está em atividade?</label>
-					<p>
-						<label>
-							<input type="radio" name="isEmAtividade" value="S" checked />
-							<span>Sim</span>
-						</label>
-					</p>
-					<p>
-						<label>
-							<input type="radio" name="isEmAtividade" value="N" />
-							<span>Não</span>
-						</label>
-					</p>
-				</div>
-				<div class="col s4">
-					<button class="btn-flat waves-effect waves-light waves-teal teal-text text-lighten-2" type="submit" name="action">Salvar informações</button>
-				</div>
-			</form>
-		</div>
-	</div>
+			
 		
-	
 
 
-	<script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>
-	 <script src="/js/materialize.js"></script>
-</body>
+		<script
+				  src="https://code.jquery.com/jquery-3.6.0.js"
+				  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+				  crossorigin="anonymous"></script>
+		 <script src="/js/materialize.js"></script>
+	</body>
 </html>
