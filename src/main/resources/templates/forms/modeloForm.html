@@ -6,14 +6,14 @@
 >
 	<head>
 		<title>G.E.S. - Modelos: Cadastro</title>
-			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		    <meta charset="UTF-8"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    <meta charset="UTF-8"/>
 	</head>
 	<body>
 		<div class="container">
-			<div class="row left col s1">
+			<div class="row">
 				<h5 class="header left teal-text text-lighten-2"><a href="/marca/" class="btn-flat waves-effect waves-light">Voltar</a></h5>
 			</div>
 			<div class="row center col s12">
@@ -31,8 +31,8 @@
 						<input th:value="${modelo.nomeModelo}" placeholder="Nome do modelo" type="text" id="modelo" name="nomeModelo" class="validate" />
 					</div>
 					<div class="input col s12">
-						<label for="ano">Ano</label>
-						<input th:value="${modelo.anoModelo}" placeholder="Ano" type="text" id="ano" name="anoModelo" class="validate" />
+						<label for="anosFab">Anos em fabricação</label>
+						<input th:value="${modelo.anosEmFabricacao}" placeholder="Anos em fabricação" type="text" id="anosFab" name="anosEmFabricacao" class="validate" />
 					</div>
 					<div class="input col s12">
 						<label for="descricao">Descrição</label>

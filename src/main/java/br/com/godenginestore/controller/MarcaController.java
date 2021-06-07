@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.godenginestore.model.Marca;
-import br.com.godenginestore.model.Modelo;
 import br.com.godenginestore.services.MarcaService;
 
 @Controller
@@ -63,14 +62,6 @@ public class MarcaController {
 		return model;
 	}
 	
-	@GetMapping(path = "/{idMarca}/listarModelos")
-	public ModelAndView listarModelosDaMarca(@PathVariable Integer idMarca) {
-		ModelAndView model = new ModelAndView("modelo");
-		List<Modelo> modelos = marcaService.getModelosDaMarca(idMarca);
-		model.addObject("modelos", modelos);
-		
-		return model;
-	}
 	
 	@RequestMapping(path="/exclur/{idMarca}/{idModelo}")
 	public ModelAndView removerModeloDaMarca(@PathVariable Integer idMarca, @PathVariable Integer idModelo) {
