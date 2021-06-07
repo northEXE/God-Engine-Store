@@ -45,7 +45,7 @@ public class MarcaController {
 		return model;
 	}
 	
-	@RequestMapping("{idMarca}")
+	@RequestMapping("/editar/{idMarca}")
 	public ModelAndView editarMarca(@PathVariable Integer idMarca) {
 		Marca marca = marcaService.buscarPorId(idMarca);
 		ModelAndView model = new ModelAndView("forms/marcaForm");
@@ -62,12 +62,4 @@ public class MarcaController {
 		return model;
 	}
 	
-	
-	@RequestMapping(path="/exclur/{idMarca}/{idModelo}")
-	public ModelAndView removerModeloDaMarca(@PathVariable Integer idMarca, @PathVariable Integer idModelo) {
-		ModelAndView model = new ModelAndView("redirect:/{idMarca}/listarModelos");
-		marcaService.deleteModeloDaMarca(idMarca, idModelo);
-		
-		return model;
-	}
 }

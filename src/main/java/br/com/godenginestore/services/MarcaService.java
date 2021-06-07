@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import br.com.godenginestore.model.Marca;
 import br.com.godenginestore.model.Modelo;
 import br.com.godenginestore.repositories.MarcaRepository;
-import br.com.godenginestore.repositories.ModeloRepository;
 
 @Service
 public class MarcaService {
@@ -17,7 +16,7 @@ public class MarcaService {
 	MarcaRepository marcaRepository;
 
 	@Autowired
-	ModeloRepository modeloRepository;
+	ModeloService modeloService;
 
 	public void cadastrarMarca(Marca marca) {
 		marcaRepository.save(marca);
@@ -42,14 +41,26 @@ public class MarcaService {
 		marca.getModelos().add(modelo);
 
 		marcaRepository.save(marca);
-		modeloRepository.save(modelo);
+		modeloService.cadastrarModelo(modelo);
+	}
+	
+	public void editarModeloNaMarca(Integer idMarca, Integer idModelo, Modelo modeloModificado) {
+		Marca marca = marcaRepository.getById(idMarca);
+		Modelo modelo = modeloService.buscarPorId(idModelo);
+		marca.getModelos().remove(modelo);
+		marcaRepository.save(marca);
+		
+		marca.getModelos().add(modeloModificado);
+		
+		marcaRepository.save(marca);
+		modeloService.cadastrarModelo(modeloModificado);
 	}
 
 	public void deleteModeloDaMarca(Integer idMarca, Integer idModelo) {
 		Marca marca = marcaRepository.getById(idMarca);
-		Modelo modelo = modeloRepository.getById(idModelo);
+		Modelo modelo = modeloService.buscarPorId(idModelo);
 		marca.getModelos().remove(modelo);
-		modeloRepository.deleteById(idModelo);
+		modeloService.removerModelo(idModelo);
 
 		marcaRepository.save(marca);
 	}

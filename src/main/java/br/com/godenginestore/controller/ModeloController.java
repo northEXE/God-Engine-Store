@@ -46,6 +46,14 @@ public class ModeloController {
 		return model;
 	}
 	
+	@PostMapping(path = "/{idModelo}/salvarAlteracoes")
+	public ModelAndView salvarAlteracoesModelo(@PathVariable Integer idMarca, @PathVariable Integer idModelo, Modelo modeloModificado) {
+		ModelAndView model = new ModelAndView("redirect:/{idMarca}/modelo/listarModelos");
+		marcaService.editarModeloNaMarca(idMarca, idModelo, modeloModificado);
+		
+		return model;
+	}
+	
 	@GetMapping(path = "/listarModelos")
 	public ModelAndView listarModelosDaMarca(@PathVariable Integer idMarca) {
 		ModelAndView model = new ModelAndView("modelo");
@@ -64,12 +72,20 @@ public class ModeloController {
 		return model;
 	}
 
-	@RequestMapping("{idModelo}")
+	@RequestMapping("/editar/{idModelo}")
 	public ModelAndView editarModelo(@PathVariable Integer idModelo) {
 		Modelo modelo = modeloService.buscarPorId(idModelo);
-		ModelAndView model = new ModelAndView("forms/modeloForm");
+		ModelAndView model = new ModelAndView("constraintEdit/modeloForm");
 		model.addObject("modelo", modelo);
 
+		return model;
+	}
+	
+	@RequestMapping(path = "/excluir/{idModelo}")
+	public ModelAndView excluirModelo(@PathVariable Integer idMarca, @PathVariable Integer idModelo) {
+		marcaService.deleteModeloDaMarca(idMarca, idModelo);
+		ModelAndView model = new ModelAndView("redirect:/listarModelos");
+		
 		return model;
 	}
 

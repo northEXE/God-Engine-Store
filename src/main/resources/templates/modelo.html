@@ -37,6 +37,7 @@
 							<td th:text="${modelo.nomeModelo}"></td>
 							<td th:text="${modelo.anosEmFabricacao}"></td>
 							<td><a th:href="@{${'/'+modelo.marca.idMarca+'/modelo/'+modelo.idModelo+'/detalharModelo'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver detalhes</a></td>
+							<td><a th:href="@{${'/'+modelo.marca.idMarca+'/modelo/editar/'+modelo.idModelo}}" class="btn-flat waves-effect waves-light teal-text">Editar modelo</a></td>
 						</tr>
 					</tbody>
 				</table>
