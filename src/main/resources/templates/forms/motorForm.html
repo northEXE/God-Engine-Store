@@ -38,7 +38,7 @@
 					</div>
 					<div class="input col s12">
 						<label for="descricao">Descrição do motor</label>
-						<textarea th:value="${motor.descricaoMotor}" placeholder="Descrição" id="descricao" name="descricaoMotor" class="materialize-textarea validate"></textarea>
+						<textarea th:value="${motor.descricaoMotor}" placeholder="Descrição" id="descricao" name="descricaoMotor" class="materialize-textarea validate" data-length="255" maxlength="255"></textarea>
 					</div>
 					<div>
 						<button class="btn-flat waves-effect waves-light teal-text text-lighten-2" type="submit" name="action">Salvar informações</button>
@@ -52,5 +52,10 @@
 				  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 				  crossorigin="anonymous"></script>
 		 <script src="/js/materialize.js"></script>
+		 <script type="text/javascript">
+		 	$(document).ready(function() {
+    			$('textarea#descricao').characterCounter();
+ 			});
+		 </script>
 	</body>
 </html>

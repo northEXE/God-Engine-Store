@@ -37,7 +37,7 @@
 							<td th:text="${motor.fabricante.nomeMarca}"></td>
 							<td th:text="${motor.nomeMotor}"></td>
 							<td th:text="${motor.cilindrada}"></td>
-							<td><a href="#" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver detalhes</a></td>
+							<td><a th:href="@{${'/'+motor.fabricante.idMarca+'/motor/'+motor.idMotor+'/detalharMotor'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver detalhes</a></td>
 						</tr>
 					</tbody>
 				</table>

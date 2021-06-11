@@ -54,4 +54,13 @@ public class MotorController {
 		return model;
 	}
 	
+	@GetMapping(path = "{idMotor}/detalharMotor")
+	public ModelAndView detalharMotor(@PathVariable Integer idMotor) {
+		ModelAndView model = new ModelAndView("appends/motorDetalhe");
+		Motor motor = motorService.buscarMotorPorId(idMotor);
+		model.addObject("motor", motor);
+		
+		return model;
+	}
+	
 }

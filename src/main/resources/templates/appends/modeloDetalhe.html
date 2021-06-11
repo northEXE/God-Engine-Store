@@ -15,10 +15,10 @@
 	<div class="container" th:object="${modelo}">
 		<div class="row" id="cabecalho">
 			<div class="left col s1">
-				<h5 class="header teal-text text-lighten-2"><a th:href="@{${'/'+modelo.marca.idMarca+'/modelo/listarModelos'}}">Voltar</a></h5>
+				<h5 class="header left teal-text text-lighten-2"><a th:href="@{${'/'+modelo.marca.idMarca+'/modelo/listarModelos'}}">Voltar</a></h5>
 			</div>
 			<div class="center col s12">
-				<h3 class="header teal-text text-lighten-2">Detalhes: <span th:text="${modelo.nomeModelo}"></h3>
+				<h3 class="header center teal-text text-lighten-2">Detalhes: <span th:text="${modelo.nomeModelo}"></h3>
 			</div>
 		</div>
 
@@ -32,7 +32,7 @@
 				</div>
 				<div class="col s6">
 					<label for="motorModelo">Motor</label>
-					<p id="motorModelo"><a href="#!" th:text="${modelo.motor.nomeMotor}" class="btn-flat waves-effect waves-light teal-text text-lighten-2"></a></p>
+					<p id="motorModelo"><a th:href="@{${'/'+modelo.marca.idMarca+'/motor/'+modelo.motor.idMotor+'/detalharMotor'}}" th:text="${modelo.motor.nomeMotor}" class="btn-flat waves-effect waves-light teal-text text-lighten-2"></a></p>
 				</div>
 			</div>
 			<label for="anosFab">Anos em Fabricação</label>
