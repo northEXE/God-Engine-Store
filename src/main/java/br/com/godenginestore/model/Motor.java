@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,6 +16,10 @@ import javax.persistence.Table;
 public class Motor {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idMotor;
+	
+	@Column(name = "codigoMotor")
 	private String codigoMotor;
 	
 	@Column(name = "nomeMotor")
@@ -25,14 +31,19 @@ public class Motor {
 	@Column(name = "cilindrada")
 	private Double cilindrada;
 	
-	@Column(name = "isNacional")
-	private Boolean isNacional;
-	
-	@Column(name = "isEmProducao")
-	private String isEmProducao;
+	@Column(name = "descricaoMotor")
+	private String descricaoMotor;
 	
 	@OneToMany
 	private List<Modelo> modelosAplicados;
+	
+	public Integer getIdMotor() {
+		return idMotor;
+	}
+
+	public void setIdMotor(Integer idMotor) {
+		this.idMotor = idMotor;
+	}
 
 	public String getCodigoMotor() {
 		return codigoMotor;
@@ -65,21 +76,14 @@ public class Motor {
 	public void setCilindrada(Double cilindrada) {
 		this.cilindrada = cilindrada;
 	}
+	
 
-	public Boolean getIsNacional() {
-		return isNacional;
+	public String getDescricaoMotor() {
+		return descricaoMotor;
 	}
 
-	public void setIsNacional(Boolean isNacional) {
-		this.isNacional = isNacional;
-	}
-
-	public String getIsEmProducao() {
-		return isEmProducao;
-	}
-
-	public void setIsEmProducao(String isEmProducao) {
-		this.isEmProducao = isEmProducao;
+	public void setDescricaoMotor(String descricaoMotor) {
+		this.descricaoMotor = descricaoMotor;
 	}
 
 	public List<Modelo> getModelosAplicados() {

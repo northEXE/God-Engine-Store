@@ -13,10 +13,36 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1 class="header center teal-text text-lighten-2">Você chegou aqui!</h1>
+			<div class="row valign-wrapper">
+				<div class="left col s1">
+					<h5 class="header left teal-text text-lighten-2"><a href="/marca/" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Voltar</a></h5>
+				</div>
+				<div class="centel col s12">
+					<h3 class="header center teal-text text-lighten-2">Motores</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<table class="stripped responsive-table">
+					<thead>
+						<th>Código</th>
+						<th>Fabricante</th>
+						<th>Nome comercial</th>
+						<th>Cilindrada</th>
+						<th>Opções</th>
+					</thead>
+					<tbody>
+						<tr th:each="motor : ${motores}">
+							<td th:text="${motor.codigoMotor}"></td>
+							<td th:text="${motor.fabricante.nomeMarca}"></td>
+							<td th:text="${motor.nomeMotor}"></td>
+							<td th:text="${motor.cilindrada}"></td>
+							<td><a href="#" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver detalhes</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-
-
 
 		<script
 				  src="https://code.jquery.com/jquery-3.6.0.js"

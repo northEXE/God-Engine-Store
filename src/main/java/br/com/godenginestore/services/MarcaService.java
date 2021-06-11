@@ -30,39 +30,13 @@ public class MarcaService {
 	public Marca buscarPorId(Integer idMarca) {
 		return marcaRepository.getById(idMarca);
 	}
+	
+	public Marca buscarPorNome(String nomeMarca) {
+		return marcaRepository.findByNomeMarca(nomeMarca);
+	}
 
 	public void removerMarca(Integer idMarca) {
 		marcaRepository.deleteById(idMarca);
-	}
-
-	public void addModeloNaMarca(Integer idMarca, Modelo modelo) {
-		Marca marca = marcaRepository.getById(idMarca);
-		modelo.setMarca(marca);
-		marca.getModelos().add(modelo);
-
-		marcaRepository.save(marca);
-		modeloService.cadastrarModelo(modelo);
-	}
-	
-	public void editarModeloNaMarca(Integer idMarca, Integer idModelo, Modelo modeloModificado) {
-		Marca marca = marcaRepository.getById(idMarca);
-		Modelo modelo = modeloService.buscarPorId(idModelo);
-		marca.getModelos().remove(modelo);
-		marcaRepository.save(marca);
-		
-		marca.getModelos().add(modeloModificado);
-		
-		marcaRepository.save(marca);
-		modeloService.cadastrarModelo(modeloModificado);
-	}
-
-	public void deleteModeloDaMarca(Integer idMarca, Integer idModelo) {
-		Marca marca = marcaRepository.getById(idMarca);
-		Modelo modelo = modeloService.buscarPorId(idModelo);
-		marca.getModelos().remove(modelo);
-		modeloService.removerModelo(idModelo);
-
-		marcaRepository.save(marca);
 	}
 
 	public List<Modelo> getModelosDaMarca(Integer idMarca) {
@@ -71,5 +45,6 @@ public class MarcaService {
 
 		return modelos;
 	}
+	
 
 }

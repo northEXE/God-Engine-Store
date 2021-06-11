@@ -36,9 +36,10 @@
 							<td th:text="${marca.idMarca}"></td>
 							<td th:text="${marca.nomeMarca}"></td>
 							<td th:text="${marca.isEmAtividade}"></td>
-							<td><a th:href="@{${'/marca/editar/'+marca.idMarca}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Alterar</a></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/modelo/form'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2 modal-trigger">Novo modelo</a></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/modelo/listarModelos'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver modelos</a></td>
+							<td><a th:href="@{${'/'+marca.idMarca+'/motor/form'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Novo motor</a></td>
+							<td><a th:href="@{${'/'+marca.idMarca+'/motor/listarMotores-Marca'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver motores</a></td>
 							<td><a th:href="@{${'/marca/excluir/'+marca.idMarca}}" class="btn-flat waves-effect waves-light red-text">Excluir</a></td>
 						</tr>
 					</tbody>

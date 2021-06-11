@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.godenginestore.model.Marca;
@@ -33,15 +34,17 @@ public class ModeloController {
 		modelo.setMarca(marca);
 		
 		model.addObject("modelo", modelo);
+		
 
 		return model;
 	}
 
 	@PostMapping(path = "/cadastrar")
-	public ModelAndView cadastrarModelo(@PathVariable Integer idMarca, Modelo modelo) {
+	public ModelAndView cadastrarModelo(@PathVariable Integer idMarca, @RequestParam Integer idMotor, Modelo modelo) {
 		ModelAndView model = new ModelAndView("redirect:/marca/");
 		modeloService.cadastrarModelo(modelo);
-		marcaService.addModeloNaMarca(idMarca, modelo);
+		modeloService.addModeloNaMarca(idMarca, modelo);
+		modeloService.addMotorDoModelo(idMotor, modelo);
 
 		return model;
 	}
@@ -49,7 +52,7 @@ public class ModeloController {
 	@PostMapping(path = "/{idModelo}/salvarAlteracoes")
 	public ModelAndView salvarAlteracoesModelo(@PathVariable Integer idMarca, @PathVariable Integer idModelo, Modelo modeloModificado) {
 		ModelAndView model = new ModelAndView("redirect:/{idMarca}/modelo/listarModelos");
-		marcaService.editarModeloNaMarca(idMarca, idModelo, modeloModificado);
+		modeloService.editarModeloNaMarca(idMarca, idModelo, modeloModificado);
 		
 		return model;
 	}
@@ -72,7 +75,7 @@ public class ModeloController {
 		return model;
 	}
 
-	@RequestMapping("/editar/{idModelo}")
+	@RequestMapping("/{idModelo}/editar")
 	public ModelAndView editarModelo(@PathVariable Integer idModelo) {
 		Modelo modelo = modeloService.buscarPorId(idModelo);
 		ModelAndView model = new ModelAndView("constraintEdit/modeloForm");
@@ -81,10 +84,10 @@ public class ModeloController {
 		return model;
 	}
 	
-	@RequestMapping(path = "/excluir/{idModelo}")
+	@RequestMapping(path = "/{idModelo}/excluir")
 	public ModelAndView excluirModelo(@PathVariable Integer idMarca, @PathVariable Integer idModelo) {
-		marcaService.deleteModeloDaMarca(idMarca, idModelo);
-		ModelAndView model = new ModelAndView("redirect:/listarModelos");
+		modeloService.deleteModeloDaMarca(idMarca, idModelo);
+		ModelAndView model = new ModelAndView("redirect:/{idMarca}/modelo/listarModelos");
 		
 		return model;
 	}

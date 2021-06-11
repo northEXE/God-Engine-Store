@@ -26,9 +26,17 @@
 						<label for="marca">Marca</label>
 						<input disabled th:value="${modelo.marca.nomeMarca}" type="text" id="marca" name="nomeMarca" class="validate" />
 					</div>
-					<div class="input col s12">
-						<label for="modelo">Nome do modelo</label>
-						<input th:value="${modelo.nomeModelo}" placeholder="Nome do modelo" type="text" id="modelo" name="nomeModelo" class="validate" />
+					<div>
+						<div class="input col s6">
+							<label for="modelo">Nome do modelo</label>
+							<input th:value="${modelo.nomeModelo}" placeholder="Nome do modelo" type="text" id="modelo" name="nomeModelo" class="validate" />
+						</div>
+						<div class="input col s6">
+							<label for="selecMotor">Motor do modelo</label>
+							<select id="selecMotor" name="idMotor">
+								<option th:each="motor : ${modelo.marca.motores}" th:value="${motor.idMotor}" id="motor" class="validate"><span th:text="${motor.nomeMotor}"></span></option>
+							</select>
+						</div>
 					</div>
 					<div class="input col s12">
 						<label for="anosFab">Anos em fabricação</label>
@@ -50,5 +58,10 @@
 				  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 				  crossorigin="anonymous"></script>
 		 <script src="/js/materialize.js"></script>
+		 <script type="text/javascript">
+		 	$(document).ready(function(){
+    			$('select').formSelect();
+  			});
+		 </script>
 	</body>
 </html>
