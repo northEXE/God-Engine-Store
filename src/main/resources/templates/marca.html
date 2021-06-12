@@ -27,7 +27,6 @@
 						<tr>
 							<th>ID</th>
 							<th>Nome da Marca</th>
-							<th>Está em ativa</th>
 							<th class="center">Opções</th>
 						</tr>
 					</thead>
@@ -35,12 +34,10 @@
 						<tr th:each="marca : ${marcas}">
 							<td th:text="${marca.idMarca}"></td>
 							<td th:text="${marca.nomeMarca}"></td>
-							<td th:text="${marca.isEmAtividade}"></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/modelo/form'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2 modal-trigger">Novo modelo</a></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/modelo/listarModelos'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver modelos</a></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/motor/form'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Novo motor</a></td>
 							<td><a th:href="@{${'/'+marca.idMarca+'/motor/listarMotores-Marca'}}" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Ver motores</a></td>
-							<td><a th:href="@{${'/marca/excluir/'+marca.idMarca}}" class="btn-flat waves-effect waves-light red-text">Excluir</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -57,16 +54,5 @@
 				  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 				  crossorigin="anonymous"></script>
 		 <script src="/js/materialize.js"></script>
-		 <script type="text/javascript">
-		 	document.addEventListener('DOMContentLoaded', function(){
-		 		var elems = document.querySelectorAll('.modal');
-		 		var instances = M.Modal.init(elems);
-		 	});
-		 </script>
-		 <script type="text/javascript">
-		 	$('form').submit(function(){
-	    		$(this)[0].reset();
-			});
-		 </script>
 	</body>
 </html>
