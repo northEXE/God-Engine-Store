@@ -44,6 +44,14 @@ public class MotorController {
 
 		return model;
 	}
+	
+	@PostMapping(path = "/{idMotor}/salvarAlteracoes")
+	public ModelAndView salvarAlteracoes(@PathVariable Integer idMarca, @PathVariable Integer idMotor, Motor motorModificado) {
+		ModelAndView model = new ModelAndView("redirect:/{idMarca}/motor/listarMotores-Marca");
+		motorService.editarMotorNaMarca(idMarca, idMotor, motorModificado);
+		
+		return model;
+	}
 
 	@GetMapping(path = "/listarMotores-Marca")
 	public ModelAndView listarMotoresDaMarca(@PathVariable Integer idMarca) {
@@ -54,7 +62,7 @@ public class MotorController {
 		return model;
 	}
 	
-	@GetMapping(path = "{idMotor}/detalharMotor")
+	@GetMapping(path = "/{idMotor}/detalharMotor")
 	public ModelAndView detalharMotor(@PathVariable Integer idMotor) {
 		ModelAndView model = new ModelAndView("appends/motorDetalhe");
 		Motor motor = motorService.buscarMotorPorId(idMotor);
@@ -63,4 +71,12 @@ public class MotorController {
 		return model;
 	}
 	
+	@RequestMapping(path = "/{idMotor}/editar")
+	public ModelAndView editarMotor(@PathVariable Integer idMotor) {
+		ModelAndView model = new ModelAndView("constraintEdit/motorForm");
+		Motor motor = motorService.buscarMotorPorId(idMotor);
+		model.addObject("motor", motor);
+		
+		return model;
+	}
 }

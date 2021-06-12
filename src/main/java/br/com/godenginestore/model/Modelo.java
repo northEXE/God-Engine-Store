@@ -1,13 +1,10 @@
 package br.com.godenginestore.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,31 +15,28 @@ public class Modelo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idModelo;
-	
+
 	@OneToOne
 	private Marca marca;
-	
+
 	@Column(name = "nomeModelo")
 	private String nomeModelo;
-	
+
 	@Column(name = "anoModelo")
 	private String anosEmFabricacao;
-	
+
 	@Column(name = "descricaoModelo")
 	private String descricaoModelo;
-	
+
 	@OneToOne
 	private Motor motor;
-	
-	@OneToMany
-	private List<Motor> motoresCompativeis;
-	
+
 	@Column(name = "isNacional")
 	private String isNacional;
-	
-	@Column(name="isEmLinha")
+
+	@Column(name = "isEmLinha")
 	private String isEmLinha;
-	
+
 	public Integer getIdModelo() {
 		return idModelo;
 	}
@@ -89,14 +83,6 @@ public class Modelo {
 
 	public void setMotor(Motor motor) {
 		this.motor = motor;
-	}
-
-	public List<Motor> getMotoresCompativeis() {
-		return motoresCompativeis;
-	}
-
-	public void setMotoresCompativeis(List<Motor> motoresCompativeis) {
-		this.motoresCompativeis = motoresCompativeis;
 	}
 
 	public String getIsNacional() {

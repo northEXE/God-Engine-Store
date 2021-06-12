@@ -4,15 +4,15 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
-	<head>
-		<title>G.E.S. - Motores: Cadastro</title>
+<head>
+	<title>G.E.S.: Motores - Editar</title>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	    <meta charset="UTF-8"/>
-	</head>
-	<body>
-		<div class="container">
+</head>
+<body>
+	<div class="container">
 			<div class="row">
 				<h5 class="header left teal-text text-lighten-2"><a href="/marca/" class="btn-flat waves-effect waves-light">Voltar</a></h5>
 			</div>
@@ -20,8 +20,9 @@
 				<h3 class="header center teal-text text-lighten-2">Cadastro de Modelo</h1>
 			</div>
 			<div class="row">
-				<form th:object="${motor}" th:action="@{${'/'+motor.fabricante.idMarca+'/motor/cadastrar'}}" method="POST" class="col s12">
-					<input type="hidden" th:field="*{idMotor}">
+				<form th:object="${motor}" th:action="@{${'/'+motor.fabricante.idMarca+'/motor/'+motor.idMotor+'/salvarAlteracoes'}}" method="POST" class="col s12">
+					<input type="hidden" th:field="*{fabricante.idMarca}" />
+					<input type="hidden" th:field="*{idMotor}" />
 					<label for="codMotor">Código do Motor</label>
 					<input type="text" th:value="${motor.codigoMotor}" id="codMotor" name="codigoMotor" class="validate" />
 					<div class="input col s12">
@@ -47,15 +48,15 @@
 			</div>
 		</div>
 
-		<script
-			src="https://code.jquery.com/jquery-3.6.0.js"
-			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			crossorigin="anonymous"></script>
-		<script src="/js/materialize.js"></script>
-		<script type="text/javascript">
-		 	$(document).ready(function() {
-    			$('textarea#descricao').characterCounter();
- 			});
-		</script>
-	</body>
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
+	<script src="/js/materialize.js"></script>
+	<script type="text/javascript">
+		 $(document).ready(function() {
+    		$('textarea#descricao').characterCounter();
+ 		});
+	</script>
+</body>
 </html>

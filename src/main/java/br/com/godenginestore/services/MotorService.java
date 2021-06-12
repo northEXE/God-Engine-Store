@@ -22,8 +22,6 @@ public class MotorService {
 	@Autowired
 	ModeloService modeloService;
 	
-	
-	
 	public void cadastrarMotor(Motor motor) {
 		motorRepository.save(motor);
 	}
@@ -61,12 +59,18 @@ public class MotorService {
 		motorRepository.save(motor);
 	}
 	
-	public void addMotorListaMotoresModelo(Integer idModelo, Motor motor) {
-		Modelo modelo = modeloService.buscarPorId(idModelo);
-		modelo.getMotoresCompativeis().add(motor);
+	public void editarMotorNaMarca(Integer idMarca, Integer idMotor, Motor motorModificado) {
+		Marca marca = marcaService.buscarPorId(idMarca);
+		Motor motor = motorRepository.getById(idMotor);
+		marca.getMotores().remove(motor);
+		marcaService.cadastrarMarca(marca);
 		
-		modeloService.cadastrarModelo(modelo);
-		motorRepository.save(motor);
+		marca.getMotores().add(motorModificado);
+		marcaService.cadastrarMarca(marca);
+		motorRepository.save(motorModificado);
+		
+		
+		
 	}
 	
 	public List<Motor> getMotoresDaMarca(Integer idMarca){
