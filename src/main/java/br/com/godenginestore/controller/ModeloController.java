@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.godenginestore.model.Marca;
 import br.com.godenginestore.model.Modelo;
+import br.com.godenginestore.model.Motor;
 import br.com.godenginestore.services.MarcaService;
 import br.com.godenginestore.services.ModeloService;
 
@@ -32,8 +33,10 @@ public class ModeloController {
 		Modelo modelo = new Modelo();
 		Marca marca = marcaService.buscarPorId(idMarca);
 		modelo.setMarca(marca);
+		List<Motor> motores = modeloService.listarMotoresParaCadastroModelo();
 		
 		model.addObject("modelo", modelo);
+		model.addObject("motores", motores);
 		
 
 		return model;

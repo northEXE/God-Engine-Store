@@ -67,7 +67,6 @@ public class ModeloService {
 		marcaService.cadastrarMarca(marca);
 		modeloRepository.save(modeloModificado);
 	}
-
 	
 	public void deleteModeloDaMarca(Integer idMarca, Integer idModelo) {
 		Marca marca = marcaService.buscarPorId(idMarca);
@@ -76,6 +75,10 @@ public class ModeloService {
 		modeloRepository.deleteById(idModelo);
 
 		marcaService.cadastrarMarca(marca);
+	}
+	
+	public List<Motor> listarMotoresParaCadastroModelo(){
+		return motorService.getTodosOsMotores();
 	}
 	
 	

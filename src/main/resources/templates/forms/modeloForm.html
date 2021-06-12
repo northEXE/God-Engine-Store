@@ -34,7 +34,7 @@
 						<div class="input col s6">
 							<label for="selecMotor">Motor do modelo</label>
 							<select id="selecMotor" name="idMotor">
-								<option th:each="motor : ${modelo.marca.motores}" th:value="${motor.idMotor}" id="motor" class="validate"><span th:text="${motor.nomeMotor}"></span></option>
+								<option th:each="motor : ${motores}" th:value="${motor.idMotor}" id="motor" class="validate"><span th:text="${motor.nomeMotor}"></span></option>
 							</select>
 						</div>
 					</div>
