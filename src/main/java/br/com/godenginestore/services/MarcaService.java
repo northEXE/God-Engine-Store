@@ -18,9 +18,14 @@ public class MarcaService {
 	@Autowired
 	ModeloService modeloService;
 
-	public void cadastrarMarca(Marca marca) {
+	public Boolean cadastrarMarca(Marca marca) {
+		List<Marca> marcas = marcaRepository.findAll();
+		for(Marca m : marcas) {
+			if(marca.getNomeMarca().toUpperCase().equals(m.getNomeMarca().toUpperCase()))
+				return false;
+		}
 		marcaRepository.save(marca);
-
+		return true;	
 	}
 
 	public List<Marca> getTodasAsMarcas() {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.godenginestore.model.Marca;
@@ -20,10 +21,11 @@ public class MarcaController {
 	MarcaService marcaService;
 	
 	@GetMapping(path = "/")
-	public ModelAndView index() {
+	public ModelAndView index(@RequestParam(required=false) String erro) {
 		ModelAndView model = new ModelAndView("marca");
 		List<Marca> marcas = marcaService.getTodasAsMarcas();
 		model.addObject("marcas", marcas);
+		model.addObject("erro", erro);
 		
 		return model;
 	}
@@ -38,9 +40,12 @@ public class MarcaController {
 	
 	@PostMapping(path = "/cadastrar")
 	public ModelAndView cadastrarMarca(Marca marca) {
-		marcaService.cadastrarMarca(marca);
+		Boolean itsOk = marcaService.cadastrarMarca(marca);
 		ModelAndView model = new ModelAndView("redirect:/marca/");
-		
+		if(itsOk == false) {
+			String erro = "Esta marca já foi cadastrada!";
+			model.addObject("erro", erro);
+		}
 		return model;
 	}
 	
