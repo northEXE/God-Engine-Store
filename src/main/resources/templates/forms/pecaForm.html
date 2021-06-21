@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title></title>
+	<link rel="shortcut icon" href="/images/favicon.ico"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+	<div class="container">
+		<div class="row" id="cabecalho">
+			<div class="left col s1">
+				<h5 class="header left"><a href="/" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Voltar</a></h5>
+			</div>
+			<div class="center col s11">
+				<h3 class="header center teal-text text-lighten-2">Cadastro de peças</h3>
+			</div>
+		</div>
+		<div class="row" id="corpo">
+			<form th:object="${peca}" th:action="@{${'/peca/cadastrar'}}" method="POST" class="col s12" id="form">
+				<input type="hidden" th:field="*{idPeca}">
+				<div>
+					<div class="row">
+						<div class="input col s6">
+							<label for="codPeca">Código da Peça</label>
+							<input placeholder="Código da peça" type="text" th:value="${peca.codigoPeca}" name="codigoPeca" id="codPeca" class="validate" />
+						</div>
+						<div class="input col s6">
+							<label for="tPeca">Tipo da peça</label>
+							<select id="tipoPeca" name="idTipoPeca">
+								<option th:each="tipoPeca : ${tiposDePecas}" th:value="${tipoPeca.idTipoPeca}" id="tPeca" class="validate"><span th:text="${tipoPeca.nomeTipoPeca}"></span></option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input col s6">
+							<label for="marca">Marca</label>
+							<input placeholder="Marca" th:value="${peca.marcaPeca}" type="text" name="marcaPeca" id="marca" class="validate" />
+						</div>
+						<div class="input col s6">
+							<label for="modelo">Modelo</label>
+							<input placeholder="Modelo" th:value="${peca.modeloPeca}" type="text" name="modeloPeca" id="modelo" class="validate" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input col s6">
+							<label for="preco">Preço</label>
+							<input placeholder="Preço" th:value="${peca.precoPeca}" type="text" name="precoPeca" id="preco" class="validate" />
+						</div>
+						<div class="input col s6">
+							<label for="estoque">Quantidade em Estoque</label>
+							<input placeholder="Quantidade de em estoque" th:value="${peca.qtdEstoque}" type="number" name="qtdEstoque" id="estoque" class="validate" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<label for="descricao">Descrição</label>
+							<textarea placeholder="Descrição" th:value="${peca.descricaoPeca}" name="descricaoPeca" id="descricao" class="materialize-textarea validate" data-length="255" maxlength="255"></textarea>
+						</div>
+					</div>
+					<div>
+						<div class="left col s12">
+							<button class="btn-flat waves-effect waves-light teal-text text-lighten-2" type="submit" name="action">Cadastrar</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
+	<script src="/js/materialize.js"></script>
+	<script type="text/javascript">
+	 	$(document).ready(function(){
+			$('select').formSelect();
+		});
+	</script>
+	<script type="text/javascript">
+	 	$(document).ready(function() {
+			$('textarea#descricao').characterCounter();
+		});
+	</script>
+	<script type="text/javascript">
+	 	$('#form').each(function(){
+			$(this)[0].reset();
+		});
+	</script>
+</body>
+</html>

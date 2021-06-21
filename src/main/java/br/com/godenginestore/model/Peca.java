@@ -10,41 +10,42 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "Peca")
 public class Peca {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPeca;
-	
+
+	@Column(name = "codigoPeca")
+	private String codigoPeca;
+
 	@OneToOne
 	private TipoPeca tipoPeca;
-	
+
 	@Column(name = "marcaPeca")
 	private String marcaPeca;
-	
+
 	@Column(name = "modeloPeca")
 	private String modeloPeca;
-	
+
 	@Column(name = "precoPeca")
 	private Double precoPeca;
-	
+
 	@Column(name = "descricaoPeca")
 	private String descricaoPeca;
-	
-	@OneToMany
-	private List<Marca> marcasAplicaveis;
-	
+
 	@OneToMany
 	private List<Modelo> modelosAplicaveis;
-	
+
 	@OneToMany
 	private List<Motor> motoresAplicaveis;
-	
+
 	@Column(name = "qtdEstoque")
 	private Long qtdEstoque;
-	
+
 	@Column(name = "isEmFalta")
 	private String isEmfalta;
 
@@ -58,6 +59,14 @@ public class Peca {
 
 	public TipoPeca getTipoPeca() {
 		return tipoPeca;
+	}
+
+	public String getCodigoPeca() {
+		return codigoPeca;
+	}
+
+	public void setCodigoPeca(String codigoPeca) {
+		this.codigoPeca = codigoPeca;
 	}
 
 	public void setTipoPeca(TipoPeca tipoPeca) {
@@ -94,14 +103,6 @@ public class Peca {
 
 	public void setDescricaoPeca(String descricaoPeca) {
 		this.descricaoPeca = descricaoPeca;
-	}
-
-	public List<Marca> getMarcasAplicaveis() {
-		return marcasAplicaveis;
-	}
-
-	public void setMarcasAplicaveis(List<Marca> marcasAplicaveis) {
-		this.marcasAplicaveis = marcasAplicaveis;
 	}
 
 	public List<Modelo> getModelosAplicaveis() {

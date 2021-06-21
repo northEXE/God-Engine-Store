@@ -6,7 +6,8 @@
 >
 	<head>
 		<title>G.E.S. - Modelos: Cadastro</title>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="shortcut icon" href="/images/favicon.ico"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 	    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	    <meta charset="UTF-8"/>
@@ -44,7 +45,7 @@
 					</div>
 					<div class="input col s12">
 						<label for="descricao">Descrição</label>
-						<textarea th:value="${modelo.descricaoModelo}" placeholder="Descrição" id="descricao" name="descricaoModelo" class="materialize-textarea validate"></textarea>
+						<textarea th:value="${modelo.descricaoModelo}" placeholder="Descrição" id="descricao" name="descricaoModelo" class="materialize-textarea validate" data-length="255" maxlength="255"></textarea>
 					</div>
 					<div>
 						<button class="btn-flat waves-effect waves-light teal-text text-lighten-2" type="submit" name="action">Salvar informações</button>
@@ -63,5 +64,10 @@
     			$('select').formSelect();
   			});
 		 </script>
+		 <script type="text/javascript">
+		 	$(document).ready(function() {
+    			$('textarea#descricao').characterCounter();
+ 			});
+		</script>
 	</body>
 </html>

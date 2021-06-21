@@ -6,16 +6,17 @@
 >
 	<head>
 		<title>God Engine Store - Home</title>
-		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
-	     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	     <meta charset="UTF-8"/>
+		<link rel="shortcut icon" href="/images/favicon.ico"/>
+	 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    <meta charset="UTF-8"/>
 	</head>
 	<body>
 		<div class="container">
 			<div class="row center">
 				<h1 class="header center teal-text text-lighten-2">God Engine Store (Admin-side)</h1>
-				<h5 header col s12 light>Under your hood - Making the power!</h5>
+				<h5 header col s12 light>Under your hood - Building power!</h5>
 			</div>
 			<div class = "row center">
 				 
@@ -25,9 +26,9 @@
 					<li><a th:href="@{${'/marca/form'}}">Marca<span class="badge">1</span></a></li>
 					<li><a th:href="@{${'/modelo/form'}}">Modelo<span class="badge">2</span></a></li>
 					<li><a href="#!">Motor<span class="badge">3</span></a></li>
-					<li><a href="#!">Peça<span class="badge">4</span></a></li>
-					<li><a href="#!">Cliente<span class="badge">5</span></a></li>
-					<li><a href="#!">Carro de cliente<span class="badge">6</span></a></li>
+					<li><a th:href="@{${'/tipoPeca/form'}}">Tipo de peça<span class="badge">4</span></a></li>
+					<li><a th:href="@{${'/peca/form'}}">Peça<span class="badge">5</span></a></li>
+					<li><a href="#!">Cliente<span class="badge">6</span></a></li>
 				</ul>	  			
 				 
 			  <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Alterar<i class="material-icons right">arrow_drop_down</i></a>
@@ -55,7 +56,7 @@
 				  	inDuration: 300,
 				  	outDuration: 200,
 				  	constrainWidth: false,
-				  	hover: true,
+				  	hover: false,
 				  	gutter: 0,
 				  	belowOrigin: false,
 				  	alignment: 'left',

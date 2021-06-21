@@ -6,22 +6,55 @@
 >
 	<head>
 		<title>God Engine Store - Peças</title>
-		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	     <meta charset="UTF-8"/>
+		<link rel="shortcut icon" href="/images/favicon.ico"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    <meta charset="UTF-8"/>
 	</head>
 	<body>
 		<div class="container">
-			<h1 class="header center teal-text text-lighten-2">Você chegou aqui!</h1>
+			<div class="row">
+				<div class="left col s1">
+					<h5 class="header left"><a href="/marca/" class="btn-flat waves-effect waves-light teal-text text-lighten-2">Voltar</a></h5>
+				</div>
+				<div class="center col s11">
+					<h3 class="header center teal-text text-lighten-2">Peças</h3>
+				</div>
+			</div>
+			<div class="row">
+				<table class="stripped responsive-table">
+					<thead>
+						<tr>
+							<th>Código peca</th>
+							<th>Tipo da peça</th>
+							<th>Marca da peça</th>
+							<th>Modelo da peca</th>
+							<th>Preço</th>
+							<th>Quantidade em estoque</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="peca : ${todasAsPecas}">
+							<td th:text="${peca.codigoPeca}"></td>
+							<td th:text="${peca.tipoPeca.nomeTipoPeca}"></td>
+							<td th:text="${peca.marcaPeca}"></td>
+							<td th:text="${peca.modeloPeca}"></td>
+							<td th:text="${peca.precoPeca}"></td>
+							<td th:text="${peca.descricaoPeca}"></td>
+							<td th:text="${peca.qtdEstoque}"></td>
+							<td ></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
-
-
 		<script
-				  src="https://code.jquery.com/jquery-3.6.0.js"
-				  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-				  crossorigin="anonymous"></script>
-		 <script src="/js/materialize.js"></script>
+			src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous"></script>
+		<script src="/js/materialize.js"></script>
 	</body>
 </html>

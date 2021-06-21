@@ -10,5 +10,5 @@ import br.com.godenginestore.model.TipoPeca;
 @Repository
 @Transactional
 public interface TipoPecaRepository extends JpaRepository<TipoPeca, Integer>{
-	TipoPeca findByTipoPeca(String tipoPeca);
+	TipoPeca findByNomeTipoPeca(String nomeTipoPeca);
 }

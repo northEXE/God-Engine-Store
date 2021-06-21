@@ -15,22 +15,22 @@ public class TipoPeca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTipoPeca;
 	
-	@Column(name = "tipoPeca")
-	private String tipoPeca;
+	@Column(name = "nomeTipoPeca")
+	private String nomeTipoPeca;
 
 	public void setIdTipoPeca(Integer idTipoPeca) {
 		this.idTipoPeca = idTipoPeca;
 	}
 
-	public void setTipoPeca(String tipoPeca) {
-		this.tipoPeca = tipoPeca;
+	public void setNomeTipoPeca(String nomeTipoPeca) {
+		this.nomeTipoPeca = nomeTipoPeca;
 	}
 
 	public Integer getIdTipoPeca() {
 		return idTipoPeca;
 	}
 
-	public String getTipoPeca() {
-		return tipoPeca;
+	public String getNomeTipoPeca() {
+		return nomeTipoPeca;
 	}
 }
