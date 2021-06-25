@@ -23,6 +23,9 @@ public class Usuario {
 	
 	@Column(name = "senhaUsuario")
 	private String senhaUsuario;
+	
+	@Column(name = "tipoUsuario")
+	public String tipoUsuario;
 
 	public Integer getIdUsuario() {
 		return idUsuario;
