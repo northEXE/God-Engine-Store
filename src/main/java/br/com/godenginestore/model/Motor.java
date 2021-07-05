@@ -11,13 +11,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Motor")
 @Data
-@Builder
+@NoArgsConstructor
 public class Motor {
 	
 	@Id

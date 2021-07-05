@@ -8,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Modelo")
 @Data
-@Builder
+@NoArgsConstructor
 public class Modelo {
 	
 	@Id
