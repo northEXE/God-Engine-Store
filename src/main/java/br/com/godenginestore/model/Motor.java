@@ -11,8 +11,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Data;
+
 @Entity
 @Table(name = "Motor")
+@Data
+@Builder
 public class Motor {
 	
 	@Id
@@ -36,62 +41,5 @@ public class Motor {
 	
 	@OneToMany
 	private List<Modelo> modelosAplicados;
-	
-	public Integer getIdMotor() {
-		return idMotor;
-	}
-
-	public void setIdMotor(Integer idMotor) {
-		this.idMotor = idMotor;
-	}
-
-	public String getCodigoMotor() {
-		return codigoMotor;
-	}
-
-	public void setCodigoMotor(String codigoMotor) {
-		this.codigoMotor = codigoMotor;
-	}
-
-	public String getNomeMotor() {
-		return nomeMotor;
-	}
-
-	public void setNomeMotor(String nomeMotor) {
-		this.nomeMotor = nomeMotor;
-	}
-
-	public Marca getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(Marca fabricante) {
-		this.fabricante = fabricante;
-	}
-
-	public Double getCilindrada() {
-		return cilindrada;
-	}
-
-	public void setCilindrada(Double cilindrada) {
-		this.cilindrada = cilindrada;
-	}
-	
-
-	public String getDescricaoMotor() {
-		return descricaoMotor;
-	}
-
-	public void setDescricaoMotor(String descricaoMotor) {
-		this.descricaoMotor = descricaoMotor;
-	}
-
-	public List<Modelo> getModelosAplicados() {
-		return modelosAplicados;
-	}
-
-	public void setModelosAplicados(List<Modelo> modelosAplicados) {
-		this.modelosAplicados = modelosAplicados;
-	}
 
 }

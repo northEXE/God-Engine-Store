@@ -8,8 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Data;
+
 @Entity
 @Table(name = "Modelo")
+@Data
+@Builder
 public class Modelo {
 	
 	@Id
@@ -36,69 +41,5 @@ public class Modelo {
 
 	@Column(name = "isEmLinha")
 	private String isEmLinha;
-
-	public Integer getIdModelo() {
-		return idModelo;
-	}
-
-	public void setIdModelo(Integer idModelo) {
-		this.idModelo = idModelo;
-	}
-
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
-	public String getNomeModelo() {
-		return nomeModelo;
-	}
-
-	public void setNomeModelo(String nomeModelo) {
-		this.nomeModelo = nomeModelo;
-	}
-
-	public String getAnosEmFabricacao() {
-		return anosEmFabricacao;
-	}
-
-	public void setAnosEmFabricacao(String anosEmFabricacao) {
-		this.anosEmFabricacao = anosEmFabricacao;
-	}
-
-	public String getDescricaoModelo() {
-		return descricaoModelo;
-	}
-
-	public void setDescricaoModelo(String descricaoModelo) {
-		this.descricaoModelo = descricaoModelo;
-	}
-
-	public Motor getMotor() {
-		return motor;
-	}
-
-	public void setMotor(Motor motor) {
-		this.motor = motor;
-	}
-
-	public String getIsNacional() {
-		return isNacional;
-	}
-
-	public void setIsNacional(String isNacional) {
-		this.isNacional = isNacional;
-	}
-
-	public String getIsEmLinha() {
-		return isEmLinha;
-	}
-
-	public void setIsEmLinha(String isEmLinha) {
-		this.isEmLinha = isEmLinha;
-	}
 
 }
