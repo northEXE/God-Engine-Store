@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +16,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "Usuario")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Usuario {
 	
 	@Id
