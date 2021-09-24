@@ -3,6 +3,9 @@ package br.com.godenginestore.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Service;
 
 import br.com.godenginestore.model.Marca;
@@ -18,14 +21,13 @@ public class MarcaService {
 	@Autowired
 	ModeloService modeloService;
 
-	public Boolean cadastrarMarca(Marca marca) {
+	public Marca cadastrarMarca(Marca marca) {
 		List<Marca> marcas = marcaRepository.findAll();
 		for(Marca m : marcas) {
 			if(marca.getNomeMarca().toUpperCase().equals(m.getNomeMarca().toUpperCase()))
-				return false;
+				return null;
 		}
-		marcaRepository.save(marca);
-		return true;	
+		return marcaRepository.save(marca);
 	}
 
 	public List<Marca> getTodasAsMarcas() {
@@ -36,8 +38,10 @@ public class MarcaService {
 		return marcaRepository.getById(idMarca);
 	}
 	
-	public Marca buscarPorNome(String nomeMarca) {
-		return marcaRepository.findByNomeMarca(nomeMarca);
+	public List<Marca> buscarPorNome(Marca marcaFiltro) {
+		Example<Marca> example = Example.of(marcaFiltro,
+				ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING));
+		return marcaRepository.findAll(example);
 	}
 
 	public void removerMarca(Integer idMarca) {
