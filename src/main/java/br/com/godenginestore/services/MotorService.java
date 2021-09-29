@@ -1,10 +1,13 @@
 package br.com.godenginestore.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.godenginestore.dto.MotorDTO;
 import br.com.godenginestore.model.Marca;
 import br.com.godenginestore.model.Modelo;
 import br.com.godenginestore.model.Motor;
@@ -22,12 +25,19 @@ public class MotorService {
 	@Autowired
 	ModeloService modeloService;
 	
-	public void cadastrarMotor(Motor motor) {
-		motorRepository.save(motor);
+	public Motor cadastrarMotor(Motor motor) {
+		return motorRepository.save(motor);
 	}
 	
-	public List<Motor> getTodosOsMotores(){
-		return motorRepository.findAll();
+	public List<MotorDTO> listarTodosOsMotores(){
+		List<Motor> motores = motorRepository.findAll();
+		ArrayList<MotorDTO> listaFiltrada = new ArrayList<MotorDTO>();
+		motores.stream().forEach(e -> listaFiltrada.add(converterParaDTO(e)));
+		return listaFiltrada;
+	}
+	
+	public Optional<Motor> buscarMotorPorIdOptional(Integer idMotor) {
+		return motorRepository.findById(idMotor);
 	}
 	
 	public Motor buscarMotorPorId(Integer idMotor) {
@@ -59,7 +69,7 @@ public class MotorService {
 		motorRepository.save(motor);
 	}
 	
-	public void editarMotorNaMarca(Integer idMarca, Integer idMotor, Motor motorModificado) {
+	public Motor editarMotorNaMarca(Integer idMarca, Integer idMotor, Motor motorModificado) {
 		Marca marca = marcaService.buscarPorId(idMarca);
 		Motor motor = motorRepository.getById(idMotor);
 		marca.getMotores().remove(motor);
@@ -67,14 +77,29 @@ public class MotorService {
 		
 		marca.getMotores().add(motorModificado);
 		marcaService.cadastrarMarca(marca);
-		motorRepository.save(motorModificado);
-		
-		
+		return motorRepository.save(motorModificado);
 		
 	}
 	
-	public List<Motor> getMotoresDaMarca(Integer idMarca){
-		Marca marca = marcaService.buscarPorId(idMarca);
-		return marca.getMotores();
+	public List<MotorDTO> listarMotoresPorMarca(Integer idMarca){
+		List<Motor> motoresMarca = marcaService.getMotoresDaMarca(idMarca);
+		ArrayList<MotorDTO> listaFiltrada = new ArrayList<MotorDTO>();
+		motoresMarca.stream().forEach(e -> listaFiltrada.add(converterParaDTO(e)));
+		return listaFiltrada;
+		
 	}
+	
+	private MotorDTO converterParaDTO(Motor motor) {
+		MotorDTO motorDTO = new MotorDTO();
+		motorDTO.setIdMotor(motor.getIdMotor());
+		motorDTO.setCodigoMotor(motor.getCodigoMotor());
+		motorDTO.setNomeMotor(motor.getNomeMotor());
+		motorDTO.setCilindrada(motor.getCilindrada());
+		motorDTO.setDescricaoMotor(motor.getDescricaoMotor());
+		motorDTO.setFabricante(motor.getFabricante().getIdMarca());
+		motorDTO.setNomeFabricante(motor.getFabricante().getNomeMarca());
+		
+		return motorDTO;
+	}
+	
 }

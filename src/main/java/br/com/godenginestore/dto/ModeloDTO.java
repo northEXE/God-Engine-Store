@@ -1,7 +1,5 @@
 package br.com.godenginestore.dto;
 
-import br.com.godenginestore.model.Marca;
-import br.com.godenginestore.model.Motor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,9 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModeloDTO {
-	private Marca marca;
+	private Integer idModelo;
+	private Integer marca;
+	private String nomeMarca;
 	private String nomeModelo;
 	private String anosEmFabricacao;
 	private String descricaoModelo;
-	private Motor motor;
+	private Integer motor;
+	private String nomeMotor;
 }

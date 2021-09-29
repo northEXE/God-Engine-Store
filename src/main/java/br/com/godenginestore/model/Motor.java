@@ -11,6 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +27,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class, property = "idMotor")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Motor {
 	
 	@Id
@@ -35,6 +43,7 @@ public class Motor {
 	private String nomeMotor;
 	
 	@OneToOne
+	@JsonIgnore
 	private Marca fabricante;
 	
 	@Column(name = "cilindrada")
@@ -44,6 +53,7 @@ public class Motor {
 	private String descricaoMotor;
 	
 	@OneToMany
+	@JsonIgnore
 	private List<Modelo> modelosAplicados;
 
 }

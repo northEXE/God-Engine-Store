@@ -1,10 +1,14 @@
 package br.com.godenginestore.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.godenginestore.dto.ModeloDTO;
+import br.com.godenginestore.dto.MotorDTO;
 import br.com.godenginestore.model.Marca;
 import br.com.godenginestore.model.Modelo;
 import br.com.godenginestore.model.Motor;
@@ -22,16 +26,23 @@ public class ModeloService {
 	@Autowired
 	MotorService motorService;
 
-	public void cadastrarModelo(Modelo modelo) {
-		modeloRepository.save(modelo);
+	public Modelo cadastrarModelo(Modelo modelo) {
+		return modeloRepository.save(modelo);
 	}
 
-	public List<Modelo> getTodosOsModelos() {
-		return modeloRepository.findAll();
+	public List<ModeloDTO> getTodosOsModelos() {
+		List<Modelo> modelos = modeloRepository.findAll();
+		ArrayList<ModeloDTO> listaFiltrada = new ArrayList<ModeloDTO>();
+		modelos.stream().forEach(e -> listaFiltrada.add(converterParaDTO(e)));
+		return listaFiltrada;
 	}
 
 	public Modelo buscarPorId(Integer idModelo) {
 		return modeloRepository.getById(idModelo);
+	}
+	
+	public Optional<Modelo> buscarPorIdOptional(Integer idModelo){
+		return modeloRepository.findById(idModelo);
 	}
 
 	public void removerModelo(Integer idModelo) {
@@ -56,7 +67,7 @@ public class ModeloService {
 		modeloRepository.save(modelo);
 	}
 	
-	public void editarModeloNaMarca(Integer idMarca, Integer idModelo, Modelo modeloModificado) {
+	public Modelo editarModeloNaMarca(Integer idMarca, Integer idModelo, Modelo modeloModificado) {
 		Marca marca = marcaService.buscarPorId(idMarca);
 		Modelo modelo = modeloRepository.getById(idModelo);
 		marca.getModelos().remove(modelo);
@@ -65,7 +76,7 @@ public class ModeloService {
 		marca.getModelos().add(modeloModificado);
 		
 		marcaService.cadastrarMarca(marca);
-		modeloRepository.save(modeloModificado);
+		return modeloRepository.save(modeloModificado);
 	}
 	
 	public void deleteModeloDaMarca(Integer idMarca, Integer idModelo) {
@@ -77,8 +88,22 @@ public class ModeloService {
 		marcaService.cadastrarMarca(marca);
 	}
 	
-	public List<Motor> listarMotoresParaCadastroModelo(){
-		return motorService.getTodosOsMotores();
+	public List<MotorDTO> listarMotoresParaCadastroModelo(){
+		return motorService.listarTodosOsMotores();
+	}
+	
+	private ModeloDTO converterParaDTO(Modelo modelo) {
+		ModeloDTO modeloDTO = new ModeloDTO();
+		modeloDTO.setIdModelo(modelo.getIdModelo());
+		modeloDTO.setMarca(modelo.getMarca().getIdMarca());
+		modeloDTO.setNomeMarca(modelo.getMarca().getNomeMarca());
+		modeloDTO.setNomeModelo(modelo.getNomeModelo());
+		modeloDTO.setAnosEmFabricacao(modelo.getAnosEmFabricacao());
+		modeloDTO.setDescricaoModelo(modelo.getDescricaoModelo());
+		modeloDTO.setMotor(modelo.getMotor().getIdMotor());
+		modeloDTO.setNomeMotor(modelo.getMotor().getNomeMotor());
+		
+		return modeloDTO;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package br.com.godenginestore.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.godenginestore.model.Marca;
 import br.com.godenginestore.model.Modelo;
+import br.com.godenginestore.model.Motor;
 import br.com.godenginestore.repositories.MarcaRepository;
 
 @Service
@@ -38,22 +40,26 @@ public class MarcaService {
 		return marcaRepository.getById(idMarca);
 	}
 	
+	public Optional<Marca> buscarPorIdOptional(Integer idMarca) {
+		return marcaRepository.findById(idMarca);
+	}
+	
 	public List<Marca> buscarPorNome(Marca marcaFiltro) {
 		Example<Marca> example = Example.of(marcaFiltro,
 				ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING));
 		return marcaRepository.findAll(example);
 	}
 
-	public void removerMarca(Integer idMarca) {
-		marcaRepository.deleteById(idMarca);
-	}
-
 	public List<Modelo> getModelosDaMarca(Integer idMarca) {
 		Marca marca = marcaRepository.getById(idMarca);
 		List<Modelo> modelos = marca.getModelos();
-
 		return modelos;
 	}
 	
+	public List<Motor> getMotoresDaMarca(Integer idMarca){
+		Marca marca = marcaRepository.getById(idMarca);
+		List<Motor> motores = marca.getMotores();
+		return motores;
+	}
 
 }
